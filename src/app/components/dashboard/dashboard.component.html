@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+<div *ngIf="!showDetails">
+        <div fxLayout='row wrap' fxLayoutGap="10px" fxLayoutAlign="center start">
+                <app-card *ngFor="let card of seriesList" [cardData]='card' fxFlex="30"
+                        (messageEvent)="receiveMessage($event)"></app-card>
+        </div>
+</div>
+
+<div *ngIf="showDetails">
+        <div fxFlex='100'>
+                <div fxFlex='60'>
+                        <div (click)='showDetails = false;' class="back-arrow">
+                                <mat-icon>arrow_back_ios</mat-icon>
+                                <div>Back To List</div>
+                        </div>
+                        <div fxLayoutAlign="center start">
+                                <div fxLayout="column">
+                                        <h2>{{show.show.name}}</h2>
+                                        <div fxLayout="row">
+                                                <div *ngFor="let genre of show.show.genres">
+                                                        <li>{{genre}}</li>
+                                                </div>
+                                        </div>
+                                        <img *ngIf='show.show.image' [src]="show.show.image?.medium" alt="Image"
+                                                width="500px" height="500px">
+                                        <img *ngIf='!show.show.image' src="assets/tv.jpg" alt="Image" width="500px"
+                                                height="500px">
+                                </div>
+                        </div>
+                        <p [innerHtml]="show.show.summary" class="summary-content"></p>
+
+                </div>
+
+                <div fxFlex='40'>
+                        Hiii
+                </div>
+        </div>
+</div>

@@ -1,0 +1,12 @@
+<!-- <p>{{cardData | json}}</p> -->
+
+<mat-card (click)="showDetails()">
+    <img mat-card-image *ngIf='cardData.image' [src]="cardData.image?.original" alt="Image">
+    <img mat-card-image *ngIf='!cardData.image' src="assets/tv.jpg" alt="Image">
+    <mat-card-content>
+      <h4 fxLayoutAlign="center center">{{cardData.name}}</h4>
+        <!-- <p [innerHtml]="cardData.show.summary"></p> -->
+    </mat-card-content>
+</mat-card>
+
+
