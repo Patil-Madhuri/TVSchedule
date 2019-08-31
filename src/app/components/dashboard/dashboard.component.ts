@@ -21,10 +21,11 @@ export class DashboardComponent implements OnInit {
   seriesList;
   showDetails = false;
   show;
+  episodeList;
   apiRoot: string = " http://api.tvmaze.com/";
-//  schedule?country=US&date=2014-12-01
+  //  schedule?country=US&date=2014-12-01
 
-  constructor(private http: HttpClient) {}
+  constructor(private httpSerive: HttpService) { }
 
   ngOnInit() {
     this.getSchedule();
@@ -32,39 +33,41 @@ export class DashboardComponent implements OnInit {
   }
 
   getSchedule() {
+    const URL = this.apiRoot + 'schedule' + "?country=US" + "&date=" + this.convertDate();
+    var contentBody = { url: URL }
+    this.httpSerive.httpGetJsonp(contentBody).subscribe(res => {
+      this.seriesList = res;
+    });
 
-    // var contentBody = { url: 'schedule', params: { country: 'US', date: '2014-12-01' } }
-
-    // this.httpSerive.httpGet(contentBody).subscribe(res => {
-    //   console.log(res);
-
-    // });
-    let apiURL = `${this.apiRoot}schedule?country=US&date=2019-08-31`;
-    console.log(apiURL);
-    const res = this.returnResponse(apiURL);
-    console.log(res);
-    
   }
   receiveMessage($event) {
-    this.showDetails = true;    
+    this.showDetails = true;
     this.show = $event;
-    console.log($event);    
-    // this.getEpisodes()
+    this.getEpisodes()
   }
 
-  returnResponse(apiURL) {
-    return this.http.jsonp(apiURL, "callback").pipe(
-      map(res => {
-        console.log(res);
-        return res;
-      }))
-
+  convertDate() {
+    var currentDate = new Date();
+    const month = currentDate.getMonth() + 1
+    const date = currentDate.getDate();
+    if (month <= 9) {
+      if (date <= 9) {
+        return currentDate.getFullYear() + '-0' + month + '-0' + date;
+      } else {
+        return currentDate.getFullYear() + '-0' + month + '-' + currentDate.getDate();
+      }
+    } else {
+      return currentDate.getFullYear() + '-' + month + '-' + currentDate.getDate();
+    }
   }
-  // getEpisodes() {
-  //   var contentBody = {url: 'shows/'+this.show.show.id+'/episodes'};
-  //   this.httpSerive.httpGet(contentBody).subscribe(res => {
-  //     console.log(res);
 
-  //   });
-  // }
+
+  getEpisodes() {
+    const URL = this.apiRoot + 'shows/' + this.show.show.id + '/episodes';
+
+    var contentBody = { url: URL };
+    this.httpSerive.httpGetJsonp(contentBody).subscribe(res => {
+      this.episodeList = res;
+    });
+  }
 }

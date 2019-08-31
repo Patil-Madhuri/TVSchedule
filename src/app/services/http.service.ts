@@ -47,7 +47,6 @@ export class HttpService {
       };
     }
     option.url = this.baseUrl + option.url;
-    console.log( option.body);
     return this.http.post(option.url, option.body, httpAuthOptions)
   }
 
@@ -88,8 +87,7 @@ export class HttpService {
     if(option.params){
       httpAuthOptions['params'] = option.params
     }
-    option.url = this.baseUrl + option.url + "?country="+option.params.country+"&date="+option.params.country;
-    return this.http.get(option.url, 'callback')
+    return this.http.get(option.url);
   }
 
 }

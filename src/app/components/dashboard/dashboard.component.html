@@ -1,13 +1,13 @@
 <app-navbar></app-navbar>
 <div *ngIf="!showDetails">
         <div fxLayout='row wrap' fxLayoutGap="10px" fxLayoutAlign="center start">
-                <app-card *ngFor="let card of seriesList" [cardData]='card' fxFlex="30"
-                        (messageEvent)="receiveMessage($event)"></app-card>
+                        <app-card *ngFor="let card of seriesList" [cardData]='card' fxFlex="30"
+                                (messageEvent)="receiveMessage($event)"></app-card>
         </div>
 </div>
 
 <div *ngIf="showDetails">
-        <div fxFlex='100'>
+        <div fxFlex='100' style="margin-top: 5%;">
                 <div fxFlex='60'>
                         <div (click)='showDetails = false;' class="back-arrow">
                                 <mat-icon>arrow_back_ios</mat-icon>
@@ -21,7 +21,9 @@
                                                         <li>{{genre}}</li>
                                                 </div>
                                         </div>
-                                        <div><li>{{show.show.language}}</li></div>
+                                        <div>
+                                                <li>{{show.show.language}}</li>
+                                        </div>
                                         <img *ngIf='show.show.image' [src]="show.show.image?.medium" alt="Image"
                                                 width="500px" height="500px">
                                         <img *ngIf='!show.show.image' src="assets/tv.jpg" alt="Image" width="500px"
@@ -32,8 +34,13 @@
 
                 </div>
 
-                <div fxFlex='40'>
+                <div fxFlex='40' style="z-index: -1">
                         <h3>Episodes</h3>
+                        <div fxLayout='row wrap' fxLayoutGap="10px" fxLayoutAlign="center start">
+
+                                <app-card *ngFor="let episode of episodeList" [cardData]='episode' fxFlex="30"
+                                        (messageEvent)="receiveMessage($event)"></app-card>
+                        </div>
                 </div>
         </div>
 </div>
