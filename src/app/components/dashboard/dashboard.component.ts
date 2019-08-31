@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
   showDetails = false;
   show;
   episodeList;
-  apiRoot: string = " http://api.tvmaze.com/";
+  apiRoot: string = environment.baseUrl;
   //  schedule?country=US&date=2014-12-01
 
   constructor(private httpSerive: HttpService) { }
