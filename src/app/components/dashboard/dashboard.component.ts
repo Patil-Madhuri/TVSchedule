@@ -41,6 +41,8 @@ export class DashboardComponent implements OnInit {
 
   }
   receiveMessage($event) {
+    console.log('sdfghdsa');
+    
     this.showDetails = true;
     this.show = $event;
     this.getEpisodes()
