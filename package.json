@@ -3,11 +3,15 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npm start",
     "build": "ng build",
+    "deploy": "ng deploy",
+    "deploy:ngh": "ngh --dist=dist/TVSchedule",
+    "deploy:ng": "ng deploy --repo=https://github.com/Patil-Madhuri/TVSchedule.git --name='Patil-Madhuri' --email=madhuripatil506@gmail.com",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot -prod"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +26,9 @@
     "@angular/platform-browser": "~8.1.2",
     "@angular/platform-browser-dynamic": "~8.1.2",
     "@angular/router": "~8.1.2",
+    "angular-cli-ghpages": "^0.6.0",
+    "express": "^4.17.1",
+    "path": "^0.12.7",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
