@@ -13,4 +13,13 @@ res.sendFile(path.join(__dirname+'/dist/TVSchedule/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 8080);
+
+const PORT = process.env.PORT || 8080;
+app.listen(PORT,(err)=>{
+    if(err)
+    console.log(err);
+
+    console.log("App listening to %d",PORT);
+    
+    
+});
