@@ -21,6 +21,7 @@
                                                         <li>{{genre}}</li>
                                                 </div>
                                         </div>
+                                        <div><li>{{show.show.language}}</li></div>
                                         <img *ngIf='show.show.image' [src]="show.show.image?.medium" alt="Image"
                                                 width="500px" height="500px">
                                         <img *ngIf='!show.show.image' src="assets/tv.jpg" alt="Image" width="500px"
@@ -32,7 +33,7 @@
                 </div>
 
                 <div fxFlex='40'>
-                        Hiii
+                        <h3>Episodes</h3>
                 </div>
         </div>
 </div>

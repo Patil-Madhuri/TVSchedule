@@ -8,7 +8,7 @@ import { AppMaterial } from './appmaterial.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { ShowDetailsComponent } from './components/show-details/show-details.component';
 import { CardComponent } from './components';
 
@@ -26,7 +26,8 @@ import { CardComponent } from './components';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AppMaterial
+    AppMaterial,
+    HttpClientJsonpModule,  
   ],
   providers: [],
   bootstrap: [AppComponent],

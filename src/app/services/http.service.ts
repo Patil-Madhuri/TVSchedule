@@ -76,4 +76,20 @@ export class HttpService {
     return this.http.delete(option.url,  httpAuthOptions)
   }
 
+
+
+  public httpGetJsonp(option: any): Observable<any> {
+    var httpAuthOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        // 'Authorization':  this.localservice.getData('token')
+      })
+    };
+    if(option.params){
+      httpAuthOptions['params'] = option.params
+    }
+    option.url = this.baseUrl + option.url + "?country="+option.params.country+"&date="+option.params.country;
+    return this.http.get(option.url, 'callback')
+  }
+
 }
