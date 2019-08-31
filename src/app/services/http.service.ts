@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
   providedIn:"root"
 })
 export class HttpService {
-  public baseUrl: string = environment.baseUrl + "";
+  public baseUrl: string = 'http://api.tvmaze.com/';
 
   constructor(private http: HttpClient) { }
   

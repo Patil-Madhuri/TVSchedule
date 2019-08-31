@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-
+  hide;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router
